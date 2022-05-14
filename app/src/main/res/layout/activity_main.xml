@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/turnText"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="Turn: X"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.903"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/XScoreText"
+        android:layout_width="140dp"
+        android:layout_height="100dp"
+        android:text="X score: 0"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toStartOf="@+id/turnText"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.306"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/OScoreText"
+        android:layout_width="140dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="16dp"
+        android:text="O score: 0"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.306"
+        tools:ignore="HardcodedText" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="383dp"
+        android:layout_height="333dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <Button
+                android:id="@+id/b1"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="117dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/a1_button"
+                android:onClick="buttonIsClicked"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,UsingOnClickInXml" />
+
+            <Button
+                android:id="@+id/b2"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="122dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/a2_button"
+                android:onClick="buttonIsClicked"
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="UsingOnClickInXml,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/b3"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="134dp"
+                android:layout_height="111dp"
+                android:background="@drawable/a3_button"
+                android:onClick="buttonIsClicked"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,UsingOnClickInXml" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/b4"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="125dp"
+                android:layout_height="115dp"
+                android:background="@drawable/b1_button"
+                android:onClick="buttonIsClicked"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="SpeakableTextPresentCheck,UsingOnClickInXml" />
+
+            <Button
+                android:id="@+id/b5"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="125dp"
+                android:layout_height="115dp"
+                android:background="@color/white"
+                android:onClick="buttonIsClicked"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,UsingOnClickInXml" />
+
+            <Button
+                android:id="@+id/b6"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="125dp"
+                android:layout_height="115dp"
+                android:background="@drawable/b3_button"
+                android:onClick="buttonIsClicked"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,UsingOnClickInXml" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/b7"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="125dp"
+                android:layout_height="115dp"
+                android:background="@drawable/c1_button"
+                android:onClick="buttonIsClicked"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="SpeakableTextPresentCheck,UsingOnClickInXml" />
+
+            <Button
+                android:id="@+id/b8"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="125dp"
+                android:layout_height="115dp"
+                android:background="@drawable/c2_button"
+                android:onClick="buttonIsClicked"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,UsingOnClickInXml" />
+
+            <Button
+                android:id="@+id/b9"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="125dp"
+                android:layout_height="115dp"
+                android:background="@drawable/c3_button"
+                android:onClick="buttonIsClicked"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#000000"
+                tools:ignore="SpeakableTextPresentCheck,UsingOnClickInXml" />
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="396dp"
+        android:layout_height="49dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.9">
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="196dp"
+            android:layout_height="match_parent"
+            android:background="@color/teal_700"
+            android:onClick="buttonIsClicked"
+            android:text="BACK"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/reset_button"
+            android:layout_width="196dp"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200"
+            android:onClick="buttonIsClicked"
+            android:text="RESET"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
