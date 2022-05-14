@@ -189,7 +189,7 @@
             android:id="@+id/back_button"
             android:layout_width="196dp"
             android:layout_height="match_parent"
-            android:background="@color/teal_700"
+            android:background="#3F51B5"
             android:onClick="buttonIsClicked"
             android:text="BACK"
             android:textColor="#000000" />
@@ -198,7 +198,7 @@
             android:id="@+id/reset_button"
             android:layout_width="196dp"
             android:layout_height="match_parent"
-            android:background="@color/teal_200"
+            android:background="#5973FF"
             android:onClick="buttonIsClicked"
             android:text="RESET"
             android:textColor="#000000" />

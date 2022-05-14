@@ -11,6 +11,7 @@ class StartActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
     }
+
     fun buttonIsClicked(view: View){
         val bPushed = view as Button
         when(bPushed.id){
@@ -29,7 +30,4 @@ class StartActivity: AppCompatActivity() {
         val intent= Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
-
-
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -36,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         playGame(cellID, bPushed)
     }
 
-    var player1 = ArrayList<String>()
-    var player2 = ArrayList<String>()
+    var player_X = ArrayList<String>()
+    var player_O = ArrayList<String>()
     var activePlayer = 1
 
     private fun playGame(cellID: String, button: Button) {
@@ -53,22 +54,27 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        if(activePlayer==1) {
+        if(activePlayer == 1) {
             setTurnText("Turn: O")
+            Log.i("Turn", "Turn text set to X")
             button.text = "X"
-            player1.add(cellID)
+            player_X.add(cellID)
             activePlayer = 2
+            Log.i("Turn", "X makes a turn")
 
-        }else{
-            setTurnText("Turn: X")
-            button.text = "O"
-            player2.add(cellID)
-            activePlayer = 1
         }
+        else {
+            setTurnText("Turn: X")
+            Log.i("Turn", "Turn text set to O")
+            button.text = "O"
+            player_O.add(cellID)
+            activePlayer = 1
+            Log.i("Turn", "O makes a turn")
+        }
+
         button.isEnabled = false;
 
         checkWinner()
-
         if(isBoardFull()) {
             Toast.makeText(this,"Draw!", Toast.LENGTH_LONG).show()
             clearBoard()
@@ -79,6 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         val turnText: TextView = findViewById(R.id.turnText)
         turnText.text = char
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -90,6 +97,7 @@ class MainActivity : AppCompatActivity() {
                         (XScoreText.text.split(" ")
                             .toTypedArray()[2].toInt() + 1).toString()
                 )
+        Log.i("Score", "X score updated")
     }
 
     @SuppressLint("SetTextI18n")
@@ -101,6 +109,7 @@ class MainActivity : AppCompatActivity() {
                         (OScoreText.text.split(" ")
                             .toTypedArray()[2].toInt() + 1).toString()
                 )
+        Log.i("Score", "O score updated")
     }
 
     private fun getButtons(): ArrayList<Button>{
@@ -136,9 +145,9 @@ class MainActivity : AppCompatActivity() {
             button.isEnabled=true
         }
 
-        player1.clear()
-        player2.clear()
-
+        player_X.clear()
+        player_O.clear()
+        Log.i("Board", "Board is cleaned")
     }
 
 
@@ -150,6 +159,7 @@ class MainActivity : AppCompatActivity() {
         val OScoreText: TextView = findViewById(R.id.OScoreText)
         XScoreText.text = "X score: 0"
         OScoreText.text = "O score: 0"
+        Log.i("Game", "Game is restarted")
     }
 
     private fun checkRow(row: ArrayList<String>): Boolean {
@@ -184,10 +194,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkWinner() {
         var winner = ""
-        if (checkRow(player1) || checkColumn(player1) || checkDiag(player1)) {
+        if (checkRow(player_X) || checkColumn(player_X) || checkDiag(player_X)) {
             winner = "X"
         }
-        else if (checkRow(player2) || checkColumn(player2) || checkDiag(player2)) {
+        else if (checkRow(player_O) || checkColumn(player_O) || checkDiag(player_O)) {
             winner = "O"
         }
 
@@ -197,16 +207,17 @@ class MainActivity : AppCompatActivity() {
                 setTurnText("Turn: X")
                 addXScoreText()
                 Toast.makeText(this,"X win the game", Toast.LENGTH_LONG).show()
+                Log.i("Win", "X wins")
                 clearBoard()
-            }else{
+
+            }
+            else {
                 setTurnText("Turn: X")
                 addOScoreText()
                 Toast.makeText(this,"O  win the game", Toast.LENGTH_LONG).show()
+                Log.i("Win", "O wins")
                 clearBoard()
             }
-
         }
     }
-
-
 }
