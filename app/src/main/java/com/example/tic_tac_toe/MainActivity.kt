@@ -223,7 +223,7 @@ class MainActivity : AppCompatActivity() {
         if( winner != "") {
 
             if (winner == "X"){
-                setTurnText("Turn: X")
+                setTurnText("Turn: O")
                 addXScoreText()
                 Toast.makeText(this,"X win the game", Toast.LENGTH_LONG).show()
                 Log.i("Win", "X wins")
