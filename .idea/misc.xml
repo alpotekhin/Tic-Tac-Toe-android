@@ -15,9 +15,14 @@
         <entry key="app/src/main/res/drawable/c2_button.xml" value="0.2365" />
         <entry key="app/src/main/res/drawable/c3_button.xml" value="0.2365" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.225" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33619384765625004" />
-        <entry key="app/src/main/res/layout/activity_single.xml" value="0.3591485507246377" />
-        <entry key="app/src/main/res/layout/activity_start.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/drawable/ic_tic_tac_toe_background.xml" value="0.1065" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2417129516601563" />
+        <entry key="app/src/main/res/layout/activity_single.xml" value="0.21595854828323147" />
+        <entry key="app/src/main/res/layout/activity_start.xml" value="0.20068450043166897" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1065" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1065" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_tic_tac_toe.xml" value="0.1065" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_tic_tac_toe_round.xml" value="0.14" />
       </map>
     </option>
   </component>

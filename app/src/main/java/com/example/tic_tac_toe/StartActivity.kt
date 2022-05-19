@@ -2,6 +2,7 @@ package com.example.tic_tac_toe
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -24,10 +25,12 @@ class StartActivity: AppCompatActivity() {
     private fun runSingleGame(){
         val intent= Intent(this, SinglePlayerActivity::class.java)
         startActivity(intent)
+        Log.i("Activity", "Activity changed to Single Game")
     }
 
     private fun runMultiPlayerGame(){
         val intent= Intent(this, MainActivity::class.java)
         startActivity(intent)
+        Log.i("Activity", "Activity changed to Multiplayer Game")
     }
 }

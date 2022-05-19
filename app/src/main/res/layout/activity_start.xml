@@ -36,7 +36,8 @@
             android:layout_weight="1"
             android:background="#5973FF"
             android:onClick="buttonIsClicked"
-            android:text="Single game" />
+            android:text="Single game"
+            tools:ignore="UsingOnClickInXml" />
 
         <Button
             android:id="@+id/multiGameButton"
@@ -45,6 +46,7 @@
             android:layout_weight="1"
             android:background="#3F51B5"
             android:onClick="buttonIsClicked"
-            android:text="Play with a friend" />
+            android:text="Play with a friend"
+            tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

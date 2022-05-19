@@ -18,9 +18,16 @@ class SinglePlayerActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single)
     }
+//  setting intents for buttons
     fun buttonIsClicked(view: View){
         val bPushed = view as Button
         var cellID = ""
+
+//        Our grid:
+//        A1 A2 A3
+//        B1 B2 B3
+//        C1 C2 C3
+
         when(bPushed.id){
             R.id.b1 -> cellID = "A1"
             R.id.b2 -> cellID = "A2"
@@ -38,18 +45,22 @@ class SinglePlayerActivity: AppCompatActivity() {
         playGame(cellID, bPushed)
     }
 
+//    User plays as X and Phone as O
     var player_X = ArrayList<String>()
     var player_O = ArrayList<String>()
 
 
     private fun playGame(cellID: String, button: Button) {
 
+//      if button "back" is pushed -> launches start screen
         if(cellID == "back") {
             val intent= Intent(this, StartActivity::class.java)
             startActivity(intent)
+            Log.i("Activity", "Activity changed to Start Screen")
             return
         }
 
+//      if button "reset" is pushed -> restarts game
         if(cellID == "reset") {
             restartGame()
             return
@@ -57,15 +68,18 @@ class SinglePlayerActivity: AppCompatActivity() {
 
         Log.i("Movement", "Player made a move")
         button.text = "X"
+
+//      mark cell as occupied by X
         player_X.add(cellID)
-
-        button.isEnabled = false;
-
+//      X or O cannot be reassigned
+        button.isEnabled = false
+//      after player puts a char -> phone makes a turn
         phoneTurn("O")
+//      checking winconditions
         checkWinner()
-
+//      checking whether board is full
         if(isBoardFull()) {
-
+//          showing "draw" message
             Toast.makeText(this,"Draw!", Toast.LENGTH_LONG).show()
             clearBoard()
         }
@@ -84,10 +98,11 @@ class SinglePlayerActivity: AppCompatActivity() {
 
             if (buttons[randIndex].text == ""){
 //                Timer().schedule(timerTask{  }, 300)
-
+//              drawing phone turn on board
                 buttons[randIndex].text = char
                 buttons[randIndex].isEnabled=false
                 turnNotMade = false
+//              mark cell as occupied by O
                 when(buttons[randIndex].id){
                     R.id.b1 -> player_O.add("A1")
                     R.id.b2 -> player_O.add("A2")
@@ -107,7 +122,7 @@ class SinglePlayerActivity: AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun addXScoreText() {
-
+//      increase player score
         val XScoreText: TextView = findViewById(R.id.XScoreText)
         XScoreText.text = (
                 "Your score: " +
@@ -119,7 +134,7 @@ class SinglePlayerActivity: AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun addOScoreText() {
-
+//      increase phone score
         val OScoreText: TextView = findViewById(R.id.OScoreText)
         OScoreText.text = (
                 "Your Phone score: " +
@@ -182,6 +197,7 @@ class SinglePlayerActivity: AppCompatActivity() {
 
 
     private fun checkRow(row: ArrayList<String>): Boolean {
+//      checks all row winconditions
         if(row.contains("A1") and row.contains("A2") and row.contains("A3")
             || row.contains("B1") and row.contains("B2") and row.contains("B3")
             || row.contains("C1") and row.contains("C2") and row.contains("C3"))
@@ -193,6 +209,7 @@ class SinglePlayerActivity: AppCompatActivity() {
     }
 
     private fun checkColumn(column: ArrayList<String>): Boolean {
+//      checks all column winconditions
         if(column.contains("A1") and column.contains("B1") and column.contains("C1")
             || column.contains("A2") and column.contains("B2") and column.contains("C2")
             || column.contains("A3") and column.contains("B3") and column.contains("C3"))
@@ -203,6 +220,7 @@ class SinglePlayerActivity: AppCompatActivity() {
     }
 
     private fun checkDiag(diag: ArrayList<String>): Boolean {
+//      checks all diagonal winconditions
         if(diag.contains("A1") and diag.contains("B2") and diag.contains("C3")
             || diag.contains("C1") and diag.contains("B2") and diag.contains("A3"))
         {
@@ -213,7 +231,6 @@ class SinglePlayerActivity: AppCompatActivity() {
 
 
     private fun checkWinner() {
-
         var winner = ""
 
         if (checkRow(player_X) || checkColumn(player_X) || checkDiag(player_X)) {

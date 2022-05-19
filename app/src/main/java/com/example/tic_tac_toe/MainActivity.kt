@@ -17,9 +17,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+//  setting intents for buttons
     fun buttonIsClicked(view: View){
         val bPushed = view as Button
         var cellID = ""
+
+//        Our grid:
+//        A1 A2 A3
+//        B1 B2 B3
+//        C1 C2 C3
+
         when(bPushed.id){
             R.id.b1 -> cellID = "A1"
             R.id.b2 -> cellID = "A2"
@@ -39,24 +46,31 @@ class MainActivity : AppCompatActivity() {
 
     var player_X = ArrayList<String>()
     var player_O = ArrayList<String>()
+
+//      First user plays plays as X other as O
     var activePlayer = 1
 
     private fun playGame(cellID: String, button: Button) {
 
+//      if button "back" is pushed -> launches start screen
         if(cellID == "back") {
             val intent= Intent(this, StartActivity::class.java)
             startActivity(intent)
+            Log.i("Activity", "Activity changed to Start Screen")
             return
         }
 
+//      if button "reset" is pushed -> restarts game
         if(cellID == "reset") {
             restartGame()
             return
         }
 
+
         if(activePlayer == 1) {
             setTurnText("Turn: O")
             Log.i("Turn", "Turn text set to X")
+//          mark cell as occupied by X
             button.text = "X"
             player_X.add(cellID)
             activePlayer = 2
@@ -66,23 +80,25 @@ class MainActivity : AppCompatActivity() {
         else {
             setTurnText("Turn: X")
             Log.i("Turn", "Turn text set to O")
+//          mark cell as occupied by O
             button.text = "O"
             player_O.add(cellID)
             activePlayer = 1
             Log.i("Turn", "O makes a turn")
         }
-
+//      X or O cannot be reassigned
         button.isEnabled = false;
-
+//      checking winconditions
         checkWinner()
         if(isBoardFull()) {
+//          showing "draw" message
             Toast.makeText(this,"Draw!", Toast.LENGTH_LONG).show()
             clearBoard()
         }
     }
 
     private fun setTurnText(char: String) {
-
+//      showing current player
         val turnText: TextView = findViewById(R.id.turnText)
         turnText.text = char
 
@@ -90,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun addXScoreText() {
-
+//      increase X score
         val XScoreText: TextView = findViewById(R.id.XScoreText)
         XScoreText.text = (
                 "X score: " +
@@ -102,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun addOScoreText() {
-
+//      increase O score
         val OScoreText: TextView = findViewById(R.id.OScoreText)
         OScoreText.text = (
                 "O score: " +
@@ -163,6 +179,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkRow(row: ArrayList<String>): Boolean {
+//      checks all row winconditions
         if(row.contains("A1") and row.contains("A2") and row.contains("A3")
             || row.contains("B1") and row.contains("B2") and row.contains("B3")
             || row.contains("C1") and row.contains("C2") and row.contains("C3"))
@@ -173,6 +190,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkColumn(column: ArrayList<String>): Boolean {
+//      checks all column winconditions
         if(column.contains("A1") and column.contains("B1") and column.contains("C1")
             || column.contains("A2") and column.contains("B2") and column.contains("C2")
             || column.contains("A3") and column.contains("B3") and column.contains("C3"))
@@ -183,6 +201,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkDiag(diag: ArrayList<String>): Boolean {
+//      checks all diagonal winconditions
         if(diag.contains("A1") and diag.contains("B2") and diag.contains("C3")
             || diag.contains("C1") and diag.contains("B2") and diag.contains("A3"))
         {
